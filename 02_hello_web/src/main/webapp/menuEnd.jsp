@@ -4,10 +4,9 @@
 String mainMenu = request.getParameter("mainMenu");
 String sideMenu = request.getParameter("sideMenu");
 String drinkMenu = request.getParameter("drinkMenu");
+int totalPrice = (int)request.getAttribute("totalPrice");
 
-System.out.println("mainMenu@jsp = " + mainMenu);
-System.out.println("sideMenu@jsp = " + sideMenu);
-System.out.println("drinkMenu@jsp = " + drinkMenu);
+System.out.println("totalPrice@jsp = " + totalPrice);
 
 %>
 <!DOCTYPE html>
@@ -42,6 +41,6 @@ span#price {
 	<span id="sideMenu"><%= sideMenu %></span>,
 	<span id="drinkMenu"><%= drinkMenu %></span>을/를 주문하셨습니다.
 	<br /> 총 결제금액은
-	<span id="price">원</span> 입니다.
+	<span id="price"><%= totalPrice %>원</span> 입니다.
 </body>
 </html>
