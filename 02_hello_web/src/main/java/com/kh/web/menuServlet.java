@@ -24,7 +24,7 @@ public class menuServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 //		1. 요청처리: 사용지입력값 -> 자바변수
-
+	
 		String mainMenu = request.getParameter("mainMenu");
 		String sideMenu = request.getParameter("sideMenu");
 		String drinkMenu = request.getParameter("drinkMenu");
