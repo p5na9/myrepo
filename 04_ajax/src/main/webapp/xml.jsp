@@ -19,6 +19,9 @@ th, td {
 table img {
 	width: 100px;
 }
+.boxoffice-container table thead{
+ 	background:#ddf;
+ }
 </style>
 </head>
 <body>
@@ -93,24 +96,45 @@ table img {
 		<table>
 			<thead>
 				<tr>
-					<th>순위</th>
-					<th>영화제목</th>
-					<th>누적 관객수(만)</th>
+					<th>순위</th> <!-- rank -->
+					<th>영화제목</th> <!-- movieNm -->
+					<th>누적 관객수(만)</th> <!-- autiAcc -->
 				</tr>
 			</thead>
 			<tbody></tbody>
 		</table>
 	</div>
 	<script>
-	$(targetDt).click((e) => {
+	$(targetDt).change((e) => {
 		$.ajax({
 			url: "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?",
 			data: {
 				key: "4d6e7d50edf73925dc7c402d57976479",
-				targetDt: "20211116"
+				targetDt: $(targetDt).val().replaceAll("-","") //날짜 선택
 			},
 			success(data){
 				console.log(data);
+				
+				const $tbody = $(".boxoffice-container table tbody");
+				$tbody.empty();
+
+				$daily = $(data).find("dailyBoxOffice");
+				
+				$daily.each((i, movie)=>{
+					
+					const rank = $(movie).find("rank").text();
+					const movieNm = $(movie).find("movieNm").text();
+					const _audiAcc = $(movie).find("audiAcc").text();
+					const audiAcc = Math.floor((_audiAcc/10000) * 10) /10;
+					const tr = `
+						<tr>
+							<th>\${rank}</th>
+							<th>\${movieNm}</th>
+							<th>\${audiAcc}(만)명</th>
+						</tr>
+					`
+					$tbody.append(tr);
+				});
 			},
 			error: console.log
 		});
