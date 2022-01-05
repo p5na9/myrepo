@@ -88,10 +88,10 @@
 		<result column="content" property="content"/>
 		<result column="reg_date" property="regDate"/>
 		<result column="read_count" property="readCount"/>
-		<association property="member" javaType="member">
-			<id column="id" property="id"/>
-			<result column="name" property="name"/>
-		</association>
+			<association property="member" javaType="member">
+				<id column="id" property="id"/>
+				<result column="name" property="name"/>
+			</association>
 		<collection property="attachments" ofType="attachment">
 			<id column="attach_no" property="no"/>
 			<result column="board_no" property="boardNo"/>
