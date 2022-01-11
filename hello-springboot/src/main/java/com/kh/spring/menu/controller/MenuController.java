@@ -37,6 +37,7 @@ public class MenuController {
 		return list;
 	}
 	
+	//실습문제
 	@GetMapping("/menu/{no}")
     public ResponseEntity<Menu> selectOneMenu(@PathVariable int no) {
         
