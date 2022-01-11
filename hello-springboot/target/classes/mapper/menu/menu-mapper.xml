@@ -12,14 +12,6 @@
 			id desc
 	</select>
 	
-	<select id="selectOneMenu" resultType="menu">
-		select
-			*
-		from
-			menu
-		where
-			no = #{no}
-	</select>
 	<select id="selectMenuByTypeAndTaste" resultType="menu">
 		select
 			*

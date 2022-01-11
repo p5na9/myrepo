@@ -214,16 +214,6 @@ div.result{width:70%; margin:0 auto;}
 				
 			});
 			
-			//실습문제
-			const getMenuNo = (no) => {
-				$.ajax({
-					url:`{pageContext.request.contextPath}/menu/\${no}`,
-					success(res){
-						console.log(res)
-					},
-					error: console.log
-				});
-			};
 			</script>
 					
 			

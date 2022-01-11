@@ -37,22 +37,17 @@ public class MenuController {
 		return list;
 	}
 	
-	//실습문제
-	@GetMapping("/menu/{no}")
-    public ResponseEntity<Menu> selectOneMenu(@PathVariable int no) {
+	@GetMapping("/menu/{id}")
+    public ResponseEntity<?> selectOneMenu(@PathVariable int id) {
         
-		try {
-            Menu menu = menuService.selectOneMenu(no);
+            Menu menu = menuService.selectOneMenu(id);
     
             if(menu != null) {
                 return ResponseEntity.ok(menu);
             } 
             else {
-                throw new Exception();
+            	return ResponseEntity.notFound().build();
             }
-        } catch (Exception e) {
-            return ResponseEntity.status(404).build();
-        }
     }
 
 	/**

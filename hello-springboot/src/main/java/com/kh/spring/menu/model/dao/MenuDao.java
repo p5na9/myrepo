@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.kh.spring.menu.model.vo.Menu;
 
@@ -22,6 +23,7 @@ public interface MenuDao {
 
 	int insertMenu(Menu menu);
 
-	Menu selectOneMenu(int no);
+	@Select("select * from menu where id = #{id}")
+	Menu selectOneMenu(int id);
 
 }
